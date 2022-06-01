@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./css/index.css" rel="stylesheet"></link>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="login-background">
+        <div class="login-form">
+          <div class="form">
+            <span>
+              <label for="name">姓名：</label> <input type="text" id="name" />
+            </span>
+          </div>
+          <div class="form">
+            <span>
+              <button type="button" id ="login">加入會議室</button>   
+            </span>       
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    <!-- 訊息：<input type="text" id="msg" /><br />
+    <button type="Button" id="submitBtn">送出</button><br />
+    <div id="msgDiv"></div> -->
+
+    <script type="module" src="./js/index.js"></script>
+    <script src="./lib/signalr/signalr.min.js"></script>
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script>
+      // 建立SignalR連接
+      var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .withAutomaticReconnect()
+        .build();
+
+      connection
+        .start()
+        .then(function () {
+          // 連接成功後要做的事情
+          console.log("connected");
+        })
+        .catch(function (err) {
+          // 錯誤處理
+          console.log("connect fail: " + err);
+        });
+
+      connection.onreconnecting((error) => {
+        console.assert(
+          connection.state === signalR.HubConnectionState.Reconnecting
+        );
+
+        document.getElementById("messageInput").disabled = true;
+
+        const li = document.createElement("li");
+        li.textContent = `Connection lost due to error "${error}". Reconnecting.`;
+        document.getElementById("messageList").appendChild(li);
+      });
+
+      connection.onclose((error) => {
+        console.assert(
+          connection.state === signalR.HubConnectionState.Disconnected
+        );
+
+        document.getElementById("messageInput").disabled = true;
+
+        const li = document.createElement("li");
+        li.textContent = `Connection closed due to error "${error}". Try refreshing this page to restart the connection.`;
+        document.getElementById("messageList").appendChild(li);
+      });
+
+      // 傳送訊息事件
+      connection.on("ReceiveMessage", function (user, message) {
+        var msg = message;
+        var encodedMsg = user + " says " + msg;
+        var li = document.createElement("li");
+        li.textContent = encodedMsg;
+        document.getElementById("msgDiv").appendChild(li);
+      });
+
+      connection.on("Disconnected", function (result) {
+        var encodedMsg = result;
+        var li = document.createElement("li");
+        li.textContent = encodedMsg;
+        document.getElementById("msgDiv").appendChild(li);
+      });
+
+      // Button事件
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", function (event) {
+          var user = document.getElementById("name").value;
+          var message = document.getElementById("msg").value;
+          connection
+            .invoke("SendMessageToUser", user, message)
+            .catch(function (err) {
+              return console.error(err.toString());
+            });
+          event.preventDefault();
+        });
+
+      async function start() {
+        try {
+          await connection.start();
+          console.log("SignalR Connected.");
+        } catch (err) {
+          console.log(err);
+          setTimeout(start, 5000);
+        }
+      }
+    </script>
+  </body>
+</html>

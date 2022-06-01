@@ -1,0 +1,45 @@
+.login-background {
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assert/img/01.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-background .login-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  padding: 5px;
+  border: 1px solid #c9deef;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.login-background .login-form .form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-background .login-form .form span {
+  font-size: 16px;
+}
+
+.login-background .login-form .form input {
+  padding: 5px;
+  height: 20px;
+}
+
+.login-background .login-form .form button {
+  font-size: 14px;
+  padding: 10px;
+  background-color: #6da5d5;
+  border: 0px;
+  color: #ffffff;
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.css.map */
