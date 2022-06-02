@@ -15,7 +15,7 @@
 
 --- 
 
-###  應對分散伺服器架構使用Redis 作爲交換訊息的資料中樞
+###  應對分散式架構使用Redis 作爲交換訊息的資料中樞
 <img src="./SignalRDemoWithRedis.gif" >
 
 ---
