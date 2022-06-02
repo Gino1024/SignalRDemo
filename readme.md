@@ -20,7 +20,7 @@
 
 ---
 
-# 建立redis server
+# 建立redis server (簡易)
 
 ```docker
 docker pull redis
