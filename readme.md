@@ -32,3 +32,10 @@ redis-cli
 
 monitor //查看即時紀錄訊息
 ```
+--- 
+
+ 如果要clone回本機跑且不用redis Server的話,只要把下面的程式碼拿掉且裝dontnet6 sdk即可
+
+Program.cs
+
+builder.Services.AddSignalR()<span style='color:#fe512a'>~~.AddStackExchangeRedis("127.0.0.1:6379");~~</span>
