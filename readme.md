@@ -20,22 +20,35 @@
 
 ---
 
-# 建立redis server (簡易)
-
+# Localhost
+## 1. 先使用docker建立redis server
 ```docker
 docker pull redis
-
 docker run --name redis-lab -p 6379:6379 -d redis
 ```
 ``` bash
 redis-cli 
-
 monitor //查看即時紀錄訊息
 ```
---- 
-
- 如果要clone回本機跑且不用redis Server的話,只要把下面的程式碼拿掉且裝dontnet6 sdk即可
-
+## 2. 移除部分程式碼
 Program.cs
 
+<span style='background:black; padding:10px;'>
 builder.Services.AddSignalR()<span style='color:#fe512a'>~~.AddStackExchangeRedis("127.0.0.1:6379");~~</span>
+</span>
+
+--- 
+# Docker
+
+筆者是Docker新手,這些順序都是可以做調整或用更短的步驟去做
+```C#
+1. docker pull redis
+2. 進到專案根目錄
+3. 將根目錄下的redis.conf移到 /user/redis/ 之下 // 可以自己改compose對應的本地路徑 
+4. docker build . -t singnalrdemo // 建立image
+5. docker network create LabBrige02 // 建立web,redis 網路
+6. docker-compose up -d
+
+完成! 請連上 127.0.0.1:5051 ~~~ 
+```
+備註: 程式的program.cs 有設定Redis 的 連線字串, 若使用者的server ip不同, 需要做調整

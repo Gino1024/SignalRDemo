@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   signalrdemo:
-    image: signalrdemo:3
+    image: signalrdemo
     container_name: "signalrdemo"
     restart: always
     ports:
