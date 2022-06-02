@@ -1,45 +1,52 @@
-.wrapper {
+@charset "UTF-8";
+/* 登入 */
+.login-wrapper {
   margin: auto;
-  width: 85%;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  position: relative;
 }
 
-.login-background {
+.login-wrapper .login-background {
   width: 100%;
   height: 100vh;
   background-image: url("/assert/img/01.jpg");
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 0.6;
+  position: absolute;
+  z-index: -1;
 }
 
-.login-background .login-form {
+.login-wrapper .login-form {
+  text-align: center;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   width: 400px;
   height: 400px;
   padding: 5px;
   border: 1px solid #c9deef;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #ffffff;
 }
 
-.login-background .login-form .form {
+.login-wrapper .login-form .form {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-background .login-form .form span {
+.login-wrapper .login-form .form span {
   font-size: 16px;
 }
 
-.login-background .login-form .form input {
+.login-wrapper .login-form .form input {
   padding: 5px;
   height: 20px;
 }
 
-.login-background .login-form .form button {
+.login-wrapper .login-form .form button {
   font-size: 14px;
   padding: 10px;
   background-color: #6da5d5;
@@ -48,7 +55,138 @@
   cursor: pointer;
 }
 
+.login-wrapper .login-form .form button:hover {
+  background-color: #9cdded;
+}
+
+/* 聊天室 */
+.chatroom-wrapper {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.chatroom-wrapper .chatroom-canvas {
+  height: 80%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat {
+  width: 100%;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content {
+  display: flex;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .profile-photo {
+  display: flex;
+  align-items: flex-end;
+  width: 42px;
+  min-width: 42px;
+  margin-right: 6px;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .profile-photo img {
+  width: 100%;
+  border: 1px solid #c9deef;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .self-word {
+  padding: 5px;
+  background-color: #ccf3e0;
+  border: 1px solid #c9deef;
+  border-radius: 10px;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .other-word {
+  padding: 5px;
+  background-color: #cae0ef;
+  border: 1px solid #c9deef;
+  border-radius: 10px;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .system-word {
+  font-size: 12px;
+  padding: 5px;
+  color: #000000;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .send-time {
+  font-size: 12px;
+  position: absolute;
+  bottom: -15px;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .send-time.right {
+  right: 0;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .send-time.left {
+  left: 0;
+}
+
+.chatroom-wrapper .chatroom-canvas .chat .content .send-time span {
+  margin-right: 10px;
+}
+
+.chatroom-wrapper .chatroom-input {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chatroom-wrapper .chatroom-input input {
+  padding: 10px;
+  width: 90%;
+  box-sizing: border-box;
+  height: 40px;
+  border: 1px solid #c9deef;
+  border-radius: 5px;
+}
+
+.chatroom-wrapper .chatroom-input button {
+  font-size: 14px;
+  padding: 10px;
+  background-color: #6da5d5;
+  border: 0px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.chatroom-wrapper .chatroom-input button:hover {
+  background-color: #9cdded;
+}
+
+/* 共用 */
 .noDisplay {
   display: none;
+}
+
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.flex-end {
+  justify-content: end;
+}
+
+.flex-start {
+  justify-content: start;
+}
+
+.flex-center {
+  justify-content: center;
 }
 /*# sourceMappingURL=index.css.map */

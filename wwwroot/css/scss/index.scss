@@ -1,22 +1,30 @@
-.wrapper{
+/* 登入 */
+.login-wrapper{
     margin: auto;
-    width: 85%;
-}
-.login-background{
-    width: 100%;
+    width: 80%;
     height: 100vh;
-    background-image: url('/assert/img/01.jpg');
     display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+
+    .login-background{
+        width: 100%;
+        height: 100vh;
+        background-image: url('/assert/img/01.jpg');
+        opacity: 0.6;
+        position: absolute;
+        z-index: -1;
+    }
+
     .login-form{
+        text-align: center;
+        margin: auto;
         display: flex;
         flex-wrap: wrap;
         width: 400px;
         height: 400px;
         padding: 5px;
         border: 1px solid #c9deef;
-        border-radius: 5px;
+        border-radius: 10px;
 
         background-color: #ffffff;
         .form{
@@ -38,11 +46,128 @@
                 border: 0px;
                 color: #ffffff;
                 cursor: pointer;
+                &:hover{
+                    background-color:  #9cdded;
+                }
             }
         }
     }
 }
 
+/* 聊天室 */
+.chatroom-wrapper{
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    .chatroom-canvas{
+        height: 80% ;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        .chat{
+            width: 100%;
+            .content{
+                display: flex;
+                position: relative;
+                margin-bottom: 40px;
+                .profile-photo{
+                    display: flex;
+                    align-items: flex-end;
+                    width: 42px;
+                    min-width: 42px;
+                    img{
+                        width: 100%;
+                        border: 1px solid #c9deef;
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+                    margin-right: 6px;
+                }
+                .self-word{
+                    padding: 5px;
+                    background-color: #ccf3e0;
+                    border: 1px solid #c9deef;
+                    border-radius: 10px;
+                }
+                .other-word{
+                    padding: 5px;
+                    background-color: #cae0ef;
+                    border: 1px solid #c9deef;
+                    border-radius: 10px;
+                }
+                .system-word{
+                    font-size: 12px;
+                    padding: 5px;
+                    color: #000000;
+                }
+
+                .send-time{
+                    font-size: 12px;
+                    position: absolute;
+                    bottom: -15px;
+                    &.right{
+                        right: 0;
+                    }
+                    &.left{
+                        left: 0;
+                    }           
+                    span{
+                        margin-right: 10px;
+                    }
+
+                }
+            }
+        }
+        
+    }
+    .chatroom-input{
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        input{
+            padding: 10px;
+            width: 90%;
+            box-sizing: border-box;
+            height: 40px;
+            border: 1px solid #c9deef;
+            border-radius: 5px;
+        }
+        button{
+            font-size: 14px;
+            padding: 10px;
+            background-color: #6da5d5;
+            border: 0px;
+            color: #ffffff;
+            cursor: pointer;
+            &:hover{
+                background-color:  #9cdded;
+            }
+        }
+    }
+}
+
+
+/* 共用 */
 .noDisplay{
     display: none;
+}
+
+.margin-top-40{
+    margin-top: 40px;
+}
+
+.flex-end{
+    justify-content: end;
+}
+.flex-start{
+    justify-content: start;
+}
+.flex-center{
+    justify-content: center;
 }
