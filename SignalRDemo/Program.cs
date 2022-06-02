@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 // });
 
 builder.Services.AddRazorPages();
-builder.Services.AddSignalR().AddStackExchangeRedis("127.0.0.1:6379");
+builder.Services.AddSignalR().AddStackExchangeRedis("172.19.0.2:6379");
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
 

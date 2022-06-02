@@ -1,0 +1,25 @@
+version: "3.6"
+services:
+  signalrdemo:
+    image: signalrdemo:3
+    container_name: "signalrdemo"
+    restart: always
+    ports:
+      - '5001:80'
+    networks:
+      - LabBrige02
+  redis:
+    image: redis
+    container_name: "redis"
+    restart: always
+    ports:
+      - '6379:6379'
+    networks:
+      - LabBrige02
+    volumes:
+      - '~/redis/:/usr/local/etc/redis/'
+networks:
+  LabBrige02:
+    external:
+      name: LabBrige02
+      

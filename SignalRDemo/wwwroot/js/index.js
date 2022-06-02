@@ -118,6 +118,11 @@ function ConenctionStateBuild() {
                         </div>`;
         $('.chatroom-canvas').append(template);
     });
+
+    connection.onclose(error => {
+        console.log(error);
+    });
+
 }
 
 function SendMessage() {
